@@ -26,13 +26,32 @@ namespace Capa_desconectada
             var cliente = customerRepository.obtenerPorID(tbBusquedaNt.Text);
             if (cliente == null)
             {
-                MessageBox.Show("El objeto es null");
+                MessageBox.Show("Este ID no se encuentra");
             }
             if (cliente != null)
             {
                 var listaClientes = new List<Customer> { cliente };
                 gridNotipado.DataSource = listaClientes;
             }
+        }
+        private void btnInsertarCliente_Click(object sender, EventArgs e)
+        {
+            var cliente = CrearCliente();
+            int insertados = customerRepository.InsertarCliente(cliente);
+            MessageBox.Show($"{insertados} cliente registrado");
+        }
+        private Customer CrearCliente()
+        {
+            var cliente = new Customer
+            {
+                CustomerID = tboxCustomerID.Text,
+                CompanyName = tboxCompanyName.Text,
+                ContactName = tboxContactName.Text,
+                ContactTitle = tboxContactTitle.Text,
+                Address = tboxAddres.Text,
+            };
+
+            return cliente;
         }
         #endregion
 
