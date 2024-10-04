@@ -128,6 +128,7 @@ namespace Capa_desconectada
             {
                 var datoOriginal = customerRepository.ExtraerInfoCliente(fila);
                 var datosModificados = CrearCliente();
+                /*
                 var filas = adaptador.Update(
                     datosModificados.CustomerID,
                     datosModificados.CompanyName,
@@ -153,6 +154,36 @@ namespace Capa_desconectada
                     datoOriginal.Fax
                     );
 
+                */
+                /*
+                var filas = adaptador.ActualizarCliente(datosModificados.CustomerID,
+                     datosModificados.CompanyName,
+                     datosModificados.ContactName,
+                     datosModificados.ContactTitle,
+                     datosModificados.Address,
+                     datosModificados.City,
+                     datosModificados.Region,
+                     datosModificados.PostalCode,
+                     datosModificados.Country,
+                     datosModificados.Phone,
+                     datosModificados.Fax, datoOriginal.CustomerID);
+                MessageBox.Show($"{filas} filas modificadas");
+
+                gridTipado.DataSource = adaptador.GetData();
+                gridNotipado.DataSource = customerRepository.ObtenerTodos();
+                */
+
+                var filas = adaptador.Consulta1SoloObjeto(datosModificados.CustomerID,
+                      datosModificados.CompanyName,
+                      datosModificados.ContactName,
+                      datosModificados.ContactTitle,
+                      datosModificados.Address,
+                      datosModificados.City,
+                      datosModificados.Region,
+                      datosModificados.PostalCode,
+                      datosModificados.Country,
+                      datosModificados.Phone,
+                      datosModificados.Fax, datoOriginal.CustomerID);
                 MessageBox.Show($"{filas} filas modificadas");
                 gridTipado.DataSource = adaptador.GetData();
                 gridNotipado.DataSource = customerRepository.ObtenerTodos();
