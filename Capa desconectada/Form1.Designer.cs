@@ -53,6 +53,7 @@
             this.tboxAddres = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnInsertarCliente = new System.Windows.Forms.Button();
+            this.btnActualizarT = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridNotipado)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -62,7 +63,6 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnActualizarNT);
-            this.groupBox1.Controls.Add(this.btnInsertarT);
             this.groupBox1.Controls.Add(this.btnBuscarNt);
             this.groupBox1.Controls.Add(this.tbBusquedaNt);
             this.groupBox1.Controls.Add(this.label1);
@@ -79,7 +79,7 @@
             // 
             // btnActualizarNT
             // 
-            this.btnActualizarNT.Location = new System.Drawing.Point(542, 642);
+            this.btnActualizarNT.Location = new System.Drawing.Point(323, 642);
             this.btnActualizarNT.Margin = new System.Windows.Forms.Padding(6);
             this.btnActualizarNT.Name = "btnActualizarNT";
             this.btnActualizarNT.Size = new System.Drawing.Size(189, 44);
@@ -90,7 +90,7 @@
             // 
             // btnInsertarT
             // 
-            this.btnInsertarT.Location = new System.Drawing.Point(322, 642);
+            this.btnInsertarT.Location = new System.Drawing.Point(394, 642);
             this.btnInsertarT.Margin = new System.Windows.Forms.Padding(6);
             this.btnInsertarT.Name = "btnInsertarT";
             this.btnInsertarT.Size = new System.Drawing.Size(189, 44);
@@ -151,7 +151,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnActualizarT);
             this.groupBox2.Controls.Add(this.btnBuscarTipado);
+            this.groupBox2.Controls.Add(this.btnInsertarT);
             this.groupBox2.Controls.Add(this.tboxBuscarTipado);
             this.groupBox2.Controls.Add(this.btnObtenerTipado);
             this.groupBox2.Controls.Add(this.label2);
@@ -167,10 +169,10 @@
             // 
             // btnBuscarTipado
             // 
-            this.btnBuscarTipado.Location = new System.Drawing.Point(218, 642);
+            this.btnBuscarTipado.Location = new System.Drawing.Point(50, 642);
             this.btnBuscarTipado.Margin = new System.Windows.Forms.Padding(6);
             this.btnBuscarTipado.Name = "btnBuscarTipado";
-            this.btnBuscarTipado.Size = new System.Drawing.Size(421, 44);
+            this.btnBuscarTipado.Size = new System.Drawing.Size(318, 44);
             this.btnBuscarTipado.TabIndex = 7;
             this.btnBuscarTipado.Text = "Buscar";
             this.btnBuscarTipado.UseVisualStyleBackColor = true;
@@ -306,6 +308,17 @@
             this.btnInsertarCliente.UseVisualStyleBackColor = true;
             this.btnInsertarCliente.Click += new System.EventHandler(this.btnInsertarCliente_Click);
             // 
+            // btnActualizarT
+            // 
+            this.btnActualizarT.Location = new System.Drawing.Point(610, 642);
+            this.btnActualizarT.Margin = new System.Windows.Forms.Padding(6);
+            this.btnActualizarT.Name = "btnActualizarT";
+            this.btnActualizarT.Size = new System.Drawing.Size(189, 44);
+            this.btnActualizarT.TabIndex = 7;
+            this.btnActualizarT.Text = "Actualizar";
+            this.btnActualizarT.UseVisualStyleBackColor = true;
+            this.btnActualizarT.Click += new System.EventHandler(this.btnActualizarT_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -365,6 +378,7 @@
         private System.Windows.Forms.Button btnInsertarCliente;
         private System.Windows.Forms.Button btnInsertarT;
         private System.Windows.Forms.Button btnActualizarNT;
+        private System.Windows.Forms.Button btnActualizarT;
     }
 }
 

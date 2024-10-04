@@ -74,8 +74,10 @@ namespace Capa_desconectada
         private void btnActualizarNT_Click(object sender, EventArgs e)
         {
             var cliente = CrearCliente();
-            var actulaixadas = customerRepository.ActualizarCliente(cliente);
-            MessageBox.Show($"{actulaixadas} filas actulizadas");
+            var actualizadas = customerRepository.ActualizarCliente(cliente);
+            MessageBox.Show($"{actualizadas} filas actualizadas");
+            gridTipado.DataSource = adaptador.GetData();
+            gridNotipado.DataSource = customerRepository.ObtenerTodos();
         }
         #endregion
 
@@ -95,7 +97,7 @@ namespace Capa_desconectada
             {
                 // Extraer el primer cliente de la tabla (suponiendo que es único)
                 var customer = customerRepository.ExtraerInfoCliente(customerData);
-
+                RellenarForm(customer);
                 // Mostrar los datos del cliente en un DataGridView o donde desees
                 gridTipado.DataSource = new List<Customer> { customer };
             }
@@ -106,6 +108,7 @@ namespace Capa_desconectada
                 gridTipado.DataSource = null;  // Limpia la grilla si no hay datos
             }
         }
+
         private void btnInsertarT_Click(object sender, EventArgs e)
         {
             var cliente = CrearCliente();
@@ -113,6 +116,47 @@ namespace Capa_desconectada
                 cliente.Fax
                 );
             MessageBox.Show($"Cliente registrado");
+            gridTipado.DataSource = adaptador.GetData();
+            gridNotipado.DataSource = customerRepository.ObtenerTodos();
+        }
+
+        private void btnActualizarT_Click(object sender, EventArgs e)
+        {
+            var fila = adaptador.GetDataByCustomerID(tboxCustomerID.Text);
+
+            if (fila != null)
+            {
+                var datoOriginal = customerRepository.ExtraerInfoCliente(fila);
+                var datosModificados = CrearCliente();
+                var filas = adaptador.Update(
+                    datosModificados.CustomerID,
+                    datosModificados.CompanyName,
+                    datosModificados.ContactName,
+                    datosModificados.ContactTitle,
+                    datosModificados.Address,
+                    datosModificados.City,
+                    datosModificados.Region,
+                    datosModificados.PostalCode,
+                    datosModificados.Country,
+                    datosModificados.Phone,
+                    datosModificados.Fax,
+                    datoOriginal.CustomerID,
+                    datoOriginal.CompanyName,
+                    datoOriginal.ContactName,
+                    datoOriginal.ContactTitle,
+                    datoOriginal.Address,
+                    datoOriginal.City,
+                    datoOriginal.Region,
+                    datoOriginal.PostalCode,
+                    datoOriginal.Country,
+                    datoOriginal.Phone,
+                    datoOriginal.Fax
+                    );
+
+                MessageBox.Show($"{filas} filas modificadas");
+                gridTipado.DataSource = adaptador.GetData();
+                gridNotipado.DataSource = customerRepository.ObtenerTodos();
+            }
         }
 
         #endregion
