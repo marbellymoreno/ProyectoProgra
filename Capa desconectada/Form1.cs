@@ -70,7 +70,6 @@ namespace Capa_desconectada
 
             return cliente;
         }
-
         private void btnActualizarNT_Click(object sender, EventArgs e)
         {
             var cliente = CrearCliente();
@@ -78,6 +77,12 @@ namespace Capa_desconectada
             MessageBox.Show($"{actualizadas} filas actualizadas");
             gridTipado.DataSource = adaptador.GetData();
             gridNotipado.DataSource = customerRepository.ObtenerTodos();
+        }
+        private void btnEliminarNoTipado_Click(object sender, EventArgs e)
+        {
+            var eliminados = customerRepository.EliminarCliente(tboxCustomerID.Text);
+            MessageBox.Show($"{eliminados} filas eliminadas");
+            gridNotipado.DataSource = customerRepository.ObtenerTodos(); 
         }
         #endregion
 
@@ -196,6 +201,5 @@ namespace Capa_desconectada
         {
             InitializeComponent();
         }
-
     }
 }
