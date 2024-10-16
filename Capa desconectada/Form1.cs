@@ -82,7 +82,8 @@ namespace Capa_desconectada
         {
             var eliminados = customerRepository.EliminarCliente(tboxCustomerID.Text);
             MessageBox.Show($"{eliminados} filas eliminadas");
-            gridNotipado.DataSource = customerRepository.ObtenerTodos(); 
+            gridTipado.DataSource = adaptador.GetData();
+            gridNotipado.DataSource = customerRepository.ObtenerTodos();
         }
         #endregion
 
@@ -133,50 +134,6 @@ namespace Capa_desconectada
             {
                 var datoOriginal = customerRepository.ExtraerInfoCliente(fila);
                 var datosModificados = CrearCliente();
-                /*
-                var filas = adaptador.Update(
-                    datosModificados.CustomerID,
-                    datosModificados.CompanyName,
-                    datosModificados.ContactName,
-                    datosModificados.ContactTitle,
-                    datosModificados.Address,
-                    datosModificados.City,
-                    datosModificados.Region,
-                    datosModificados.PostalCode,
-                    datosModificados.Country,
-                    datosModificados.Phone,
-                    datosModificados.Fax,
-                    datoOriginal.CustomerID,
-                    datoOriginal.CompanyName,
-                    datoOriginal.ContactName,
-                    datoOriginal.ContactTitle,
-                    datoOriginal.Address,
-                    datoOriginal.City,
-                    datoOriginal.Region,
-                    datoOriginal.PostalCode,
-                    datoOriginal.Country,
-                    datoOriginal.Phone,
-                    datoOriginal.Fax
-                    );
-
-                */
-                /*
-                var filas = adaptador.ActualizarCliente(datosModificados.CustomerID,
-                     datosModificados.CompanyName,
-                     datosModificados.ContactName,
-                     datosModificados.ContactTitle,
-                     datosModificados.Address,
-                     datosModificados.City,
-                     datosModificados.Region,
-                     datosModificados.PostalCode,
-                     datosModificados.Country,
-                     datosModificados.Phone,
-                     datosModificados.Fax, datoOriginal.CustomerID);
-                MessageBox.Show($"{filas} filas modificadas");
-
-                gridTipado.DataSource = adaptador.GetData();
-                gridNotipado.DataSource = customerRepository.ObtenerTodos();
-                */
 
                 var filas = adaptador.Consulta1SoloObjeto(datosModificados.CustomerID,
                       datosModificados.CompanyName,
@@ -194,7 +151,13 @@ namespace Capa_desconectada
                 gridNotipado.DataSource = customerRepository.ObtenerTodos();
             }
         }
-
+        private void btnEliminarTipado_Click(object sender, EventArgs e)
+        {
+            int filasEliminadas = adaptador.EliminarCliente(tboxCustomerID.Text);
+            MessageBox.Show($"{filasEliminadas} filas eliminadas");
+            gridTipado.DataSource = adaptador.GetData();
+            gridNotipado.DataSource = customerRepository.ObtenerTodos();
+        }
         #endregion
 
         public Form1()
